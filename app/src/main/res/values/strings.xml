@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Binary Converter</string>
+
+    <string name="main_value">Valor</string>
+    <string name="main_calculate">Calcular</string>
+    <string name="main_empty_all">Vaciar Todo</string>
+
+    <string name="main_tab_converter">Conversor</string>
+    <string name="main_tab_real_time">Tiempo Real</string>
+    <string name="main_tab_base_n">Base N</string>
+
+    <string name="error_value_empty">El valor no puede estar vacío.</string>
+    <string name="error_origin_target_same">El origen y el destino no pueden ser el mismo.</string>
+    <string name="error_invalid_value">El valor introducido no es válido.</string>
+
+    <string name="binary_to_binary">%1$s a %2$s</string>
+
+    <string name="binary_to_result">%1$s: %2$s</string>
+
+    <string name="binary_short_to_long_2">Binario</string>
+    <string name="binary_short_to_long_8">Octal</string>
+    <string name="binary_short_to_long_10">Decimal</string>
+    <string name="binary_short_to_long_16">Hexadecimal</string>
+
+    <string name="ad_main_activity_bottom">ca-app-pub-8577248463385189/6092983959</string>
+</resources>

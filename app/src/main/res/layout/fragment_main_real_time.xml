@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_real_time_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/binary_value_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_form_margin">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/binary_value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="number"
+                android:digits="10., "
+                android:hint="@string/binary_short_to_long_2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/octal_value_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_form_margin">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/octal_value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="number"
+                android:digits="12345670., "
+                android:hint="@string/binary_short_to_long_8" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/decimal_value_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_form_margin">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/decimal_value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="number"
+                android:digits="1234567890., "
+                android:hint="@string/binary_short_to_long_10" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/hex_value_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_form_margin">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/hex_value"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="textCapCharacters"
+                android:digits="ABCDEF1234567890., "
+                android:hint="@string/binary_short_to_long_16" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/empty_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_empty_all"
+            style="@style/Widget.AppCompat.Button.Colored" />
+
+    </LinearLayout>
+
+</ScrollView>
