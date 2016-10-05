@@ -102,7 +102,8 @@ public class BinaryResultsAdapter extends
 
     private void setAnimation(View viewToAnimate, int position) {
         if (position == 0 && triggerAnimation) {
-            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
+            Animation animation = AnimationUtils.loadAnimation(mContext,
+                    android.R.anim.slide_in_left);
             viewToAnimate.startAnimation(animation);
 
             triggerAnimation = false;

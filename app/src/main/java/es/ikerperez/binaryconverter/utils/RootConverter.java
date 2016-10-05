@@ -1,7 +1,9 @@
 package es.ikerperez.binaryconverter.utils;
 
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import timber.log.Timber;
@@ -36,10 +38,17 @@ public class RootConverter {
                 return ConverterUtil.formatResult(parsedTarget,
                         new BigInteger(parts[0], parsedOrigin).toString(parsedTarget), null, null);
             } else {
-                String decimalFraction =
-                        ConverterUtil.baseFractionToDecimal(parts[1], parsedOrigin);
-                String baseFraction =
-                        ConverterUtil.decimalFractionToBase(decimalFraction, parsedTarget);
+                String baseFraction;
+
+                if (parsedOrigin == 10) {
+                    baseFraction =
+                            ConverterUtil.decimalFractionToBase(parts[1], parsedTarget);
+                } else {
+                    String decimalFraction =
+                            ConverterUtil.baseFractionToDecimal(parts[1], parsedOrigin);
+                    baseFraction =
+                            ConverterUtil.decimalFractionToBase(decimalFraction, parsedTarget);
+                }
 
                 return ConverterUtil.formatResult(parsedTarget,
                         new BigInteger(parts[0], parsedOrigin).toString(parsedTarget),
@@ -47,6 +56,73 @@ public class RootConverter {
             }
         } catch (NumberFormatException e) {
             return null;
+        }
+    }
+
+    public static String operation(String firstValue, String secondValue, String base,
+                                   String operator) {
+        Timber.i("Operation using %s and %s on base %s and operator %s.", firstValue, secondValue,
+                base, operator);
+
+        int parsedBase = Integer.parseInt(base);
+        Character split = ConverterUtil.getSplit(firstValue);
+
+        if (split == null) {
+            split = '.';
+        }
+
+        if (parsedBase != 10) {
+            firstValue = ConverterUtil.parseToDecimalOperation(firstValue, parsedBase);
+            secondValue = ConverterUtil.parseToDecimalOperation(secondValue, parsedBase);
+        }
+
+        if (firstValue == null || secondValue == null) {
+            return null;
+        }
+
+        if (firstValue.contains(",") || secondValue.contains(",")) {
+            firstValue = firstValue.replace(",", ".");
+            secondValue = secondValue.replace(",", ".");
+        }
+
+        BigDecimal parsedFirstValue = new BigDecimal(firstValue);
+        BigDecimal parsedSecondValue = new BigDecimal(secondValue);
+        BigDecimal result = null;
+
+        switch (operator) {
+            case "+":
+                result = parsedFirstValue.add(parsedSecondValue);
+                break;
+            case "-":
+                result = parsedFirstValue.subtract(parsedSecondValue);
+                break;
+            case "*":
+                result = parsedFirstValue.multiply(parsedSecondValue);
+                break;
+            case "/":
+                result = parsedFirstValue.divide(parsedSecondValue, ConverterUtil.DECIMAL_LIMIT,
+                        BigDecimal.ROUND_HALF_EVEN);
+                break;
+            case "^":
+                try {
+                    result = new BigDecimal(
+                            Math.pow(parsedFirstValue.doubleValue(),
+                                    parsedSecondValue.doubleValue()));
+                } catch (NumberFormatException e) {
+                    result = null;
+                }
+        }
+
+        if (result == null) {
+            return null;
+        } else {
+            String parsed = parseNumber(result.toPlainString(), "10", base);
+
+            if (parsed == null) {
+                return null;
+            }
+
+            return TextUtils.join(String.valueOf(split), parsed.split("\\."));
         }
     }
 

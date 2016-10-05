@@ -4,18 +4,31 @@
     <string name="main_value">Valor</string>
     <string name="main_calculate">Calcular</string>
     <string name="main_empty_all">Vaciar Todo</string>
+    <string name="main_first_value">Primer valor</string>
+    <string name="main_second_value">Segundo valor</string>
+    <string name="main_result">Resultado</string>
+
+    <string name="main_plus">Suma</string>
+    <string name="main_substract">Resta</string>
+    <string name="main_multiply">Multiplicación</string>
+    <string name="main_divide">División</string>
+    <string name="main_pow">Elevación</string>
 
     <string name="main_tab_converter">Conversor</string>
     <string name="main_tab_real_time">Tiempo Real</string>
     <string name="main_tab_base_n">Base N</string>
+    <string name="main_tab_operate">Calculadora</string>
 
     <string name="error_value_empty">El valor no puede estar vacío.</string>
     <string name="error_origin_target_same">El origen y el destino no pueden ser el mismo.</string>
     <string name="error_invalid_value">El valor introducido no es válido.</string>
+    <string name="error_value_invalid">Uno de los valores introducidos no es válido.</string>
 
     <string name="binary_to_binary">%1$s a %2$s</string>
 
     <string name="binary_to_result">%1$s: %2$s</string>
+
+    <string name="operation_base">%1$s - %2$s</string>
 
     <string name="binary_short_to_long_2">Binario</string>
     <string name="binary_short_to_long_8">Octal</string>

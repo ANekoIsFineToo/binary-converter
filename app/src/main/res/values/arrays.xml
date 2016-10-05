@@ -89,4 +89,12 @@
         <item>Base 35</item>
         <item>Base 36</item>
     </string-array>
+
+    <string-array name="operations">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+        <item>^</item>
+    </string-array>
 </resources>

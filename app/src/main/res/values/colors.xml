@@ -8,4 +8,6 @@
     <color name="alternate_dark_2">#1976D2</color>
     <color name="alternate_3">#009688</color>
     <color name="alternate_dark_3">#00796B</color>
+    <color name="alternate_4">#FF5722</color>
+    <color name="alternate_dark_4">#E64A19</color>
 </resources>

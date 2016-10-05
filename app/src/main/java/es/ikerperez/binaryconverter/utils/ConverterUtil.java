@@ -3,6 +3,7 @@ package es.ikerperez.binaryconverter.utils;
 import android.support.annotation.Nullable;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -56,6 +57,30 @@ public class ConverterUtil {
         }
 
         return new BigDecimal(parsedDecimal).toPlainString().split("\\.")[1];
+    }
+
+    public static String parseToDecimalOperation(String value, int base) {
+        String parts[] = getParts(value);
+
+        try {
+            if (parts == null) {
+                return new BigInteger(value, base).toString();
+            }
+
+            if (parts.length > 2) {
+                return null;
+            }
+
+            if (parts.length == 1 || parts[1].matches("0+")) {
+                return new BigInteger(parts[0], base).toString();
+            } else {
+                String decimalFraction = baseFractionToDecimal(parts[1], base);
+
+                return new BigInteger(parts[0], base).toString() + '.' + decimalFraction;
+            }
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     public static String formatResult(int base, String value, @Nullable String decimals,

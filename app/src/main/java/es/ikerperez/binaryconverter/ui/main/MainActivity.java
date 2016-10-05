@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -25,6 +26,7 @@ import es.ikerperez.binaryconverter.utils.ViewUtil;
 
 public class MainActivity extends BaseActivity {
 
+    @BindView(R.id.main_activity) RelativeLayout mMainActivity;
     @BindView(R.id.pager) ViewPager mViewPager;
     @BindView(R.id.toolbar) Toolbar mToolbar;
     @BindView(R.id.tabs) TabLayout mTabs;
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 ViewUtil.hideKeyboard(mActivity);
+                mMainActivity.requestFocus();
                 changeToolbarColor(position);
             }
 
@@ -88,6 +91,7 @@ public class MainActivity extends BaseActivity {
         adapter.addFragment(ConverterFragment.newInstance(), getString(R.string.main_tab_converter));
         adapter.addFragment(RealTimeFragment.newInstance(), getString(R.string.main_tab_real_time));
         adapter.addFragment(BaseNFragment.newInstance(), getString(R.string.main_tab_base_n));
+        adapter.addFragment(OperateFragment.newInstance(), getString(R.string.main_tab_operate));
         viewPager.setAdapter(adapter);
     }
 
@@ -109,6 +113,10 @@ public class MainActivity extends BaseActivity {
             case 2:
                 preColorFrom = fetchColor(R.color.alternate_3);
                 preColorDarkFrom = fetchColor(R.color.alternate_dark_3);
+                break;
+            case 3:
+                preColorFrom = fetchColor(R.color.alternate_4);
+                preColorDarkFrom = fetchColor(R.color.alternate_dark_4);
         }
 
         switch (position) {
@@ -123,6 +131,10 @@ public class MainActivity extends BaseActivity {
             case 2:
                 preColorTo = fetchColor(R.color.alternate_3);
                 preColorDarkTo = fetchColor(R.color.alternate_dark_3);
+                break;
+            case 3:
+                preColorTo = fetchColor(R.color.alternate_4);
+                preColorDarkTo = fetchColor(R.color.alternate_dark_4);
         }
 
         if (preColorFrom == null || preColorDarkFrom == null ||
