@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="number"
-                android:digits="10., "
+                android:digits="10.,- "
                 android:hint="@string/binary_short_to_long_2" />
         </android.support.design.widget.TextInputLayout>
 
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="number"
-                android:digits="12345670., "
+                android:digits="12345670.,- "
                 android:hint="@string/binary_short_to_long_8" />
         </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +62,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="number"
-                android:digits="1234567890., "
+                android:digits="1234567890.,- "
                 android:hint="@string/binary_short_to_long_10" />
         </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="textCapCharacters"
-                android:digits="ABCDEF1234567890., "
+                android:digits="ABCDEF1234567890.,- "
                 android:hint="@string/binary_short_to_long_16" />
         </android.support.design.widget.TextInputLayout>
 

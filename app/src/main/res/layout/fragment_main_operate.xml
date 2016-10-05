@@ -43,7 +43,7 @@
                         android:ems="10"
                         android:maxLines="1"
                         android:inputType="textCapCharacters"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890., "
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,- "
                         android:hint="@string/main_first_value" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -86,7 +86,7 @@
                         android:ems="10"
                         android:maxLines="1"
                         android:inputType="textCapCharacters"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890., "
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,- "
                         android:hint="@string/main_second_value" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>

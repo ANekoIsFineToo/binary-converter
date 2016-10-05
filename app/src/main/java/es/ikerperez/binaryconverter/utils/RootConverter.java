@@ -54,7 +54,7 @@ public class RootConverter {
                         new BigInteger(parts[0], parsedOrigin).toString(parsedTarget),
                         baseFraction, split);
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException|ArrayIndexOutOfBoundsException e) {
             return null;
         }
     }
@@ -100,7 +100,7 @@ public class RootConverter {
                 result = parsedFirstValue.multiply(parsedSecondValue);
                 break;
             case "/":
-                result = parsedFirstValue.divide(parsedSecondValue, ConverterUtil.DECIMAL_LIMIT,
+                result = parsedFirstValue.divide(parsedSecondValue, ConverterUtil.SIMPLE_MANTISSA, //TODO Change this
                         BigDecimal.ROUND_HALF_EVEN);
                 break;
             case "^":

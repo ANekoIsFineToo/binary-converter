@@ -43,7 +43,7 @@
                         android:ems="10"
                         android:maxLines="1"
                         android:inputType="textCapCharacters"
-                        android:digits="ABCDEF1234567890., "
+                        android:digits="ABCDEF1234567890.,- "
                         android:hint="@string/main_value" />
                 </android.support.design.widget.TextInputLayout>
 

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Creado por Iker Pérez Brunelli <DarkerTV> a fecha de 30/09/2016.
  */
@@ -15,13 +17,14 @@ import java.util.List;
 public class ConverterUtil {
 
     // Limit to avoid never end recursions.
-    public static final int DECIMAL_LIMIT = 256;
+    public static final int SIMPLE_MANTISSA = 23;
+    public static final int DOUBLE_MANTISSA = 52;
 
     public static String decimalFractionToBase(String decimal, int base) {
         double Decimal = Double.parseDouble(String.format("0.%s", decimal));
         String parsedDecimal = "";
-        int decimalAmount = 0;
         boolean running = true;
+        int limit = SIMPLE_MANTISSA / baseToLength(base);
 
         while (running) {
             double computed = Decimal * base;
@@ -34,14 +37,16 @@ public class ConverterUtil {
                 Decimal = Double.parseDouble(String.format("0.%s", decimalParts[1]));
             }
 
-            decimalAmount++;
-
-            if (decimalAmount >= DECIMAL_LIMIT) {
+            if (parsedDecimal.length() >= limit) {
                 running = false;
             }
         }
 
-        return parsedDecimal;
+        if (parsedDecimal.length() >= limit) {
+            return parsedDecimal.substring(0, limit);
+        } else {
+            return parsedDecimal;
+        }
     }
 
     public static String baseFractionToDecimal(String fraction, int base) {
@@ -200,5 +205,29 @@ public class ConverterUtil {
         }
 
         return result;
+    }
+
+    public static int baseToLength(int base) {
+        if (base == 2) {
+            return 1;
+        }
+
+        if (base == 3 || base == 4) {
+            return 2;
+        }
+
+        if (base >= 5 && base <= 8) {
+            return 3;
+        }
+
+        if (base >= 9 && base <= 16) {
+            return 4;
+        }
+
+        if (base >= 17 && base <= 32) {
+            return 5;
+        }
+
+        return 6;
     }
 }
